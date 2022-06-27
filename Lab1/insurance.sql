@@ -59,10 +59,10 @@ COMMIT;
 
 INSERT INTO ACCIDENT
 Values(11,'2000-2-1','Delhi'),
-(22,'2003-3-2','Lucknow'),
-(33,'2005-2-4','Kolkatha'),
-(44,'2008-8-5','Kerala'),
-(55,'2004-11-4','Bihar');
+(12,'2003-3-2','Lucknow'),
+(13,'2005-2-4','Kolkatha'),
+(14,'2008-8-5','Kerala'),
+(15,'2004-11-4','Bihar');
 COMMIT;
 
 INSERT INTO OWNS
@@ -90,7 +90,14 @@ SELECT * FROM PARTICIPATED;
 UPDATE PARTICIPATED SET damage_amount=25000 WHERE report_number=12 and Regno='1234';
 
 INSERT INTO ACCIDENT Values(23,'2010-5-9','Mysore');
-INSERT INTO PARTICIPATED Values('4','1111',23,10000);
+INSERT INTO PERSON Values('4','jkl','Mysore');
+INSERT INTO CAR Values('2222','Mercedes','2010');
+INSERT INTO PARTICIPATED Values('4','2222',23,10000);
 
-SELECT COUNT(*) AS Totalcars FROM CAR C,PARTICIPATED P WHERE C.Regno = P.Regno AND C.model='Alto';
+SELECT COUNT(*)
+FROM ACCIDENT
+WHERE  DATE BETWEEN '2008-01-01' AND '2008-12-31';
 
+SELECT COUNT(*)
+FROM ACCIDENT A, CAR C, PARTICIPATED P
+WHERE A.report_number = P.report_number AND P.Regno = C.Regno AND C.model='Alto';
